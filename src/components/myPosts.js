@@ -1,16 +1,25 @@
-import * as React from "react";
-import { List, Datagrid, EditButton, DeleteButton, DateField, TextField} from "react-admin";
+import * as React from "react"
+import { List, Datagrid, EditButton, DeleteButton, DateField, TextField, TextInput } from "react-admin"
 
-const MyPostList = (props) =>{
-    return <List {...props}>
-                <Datagrid>
-                    <TextField source="id"/>
-                    <TextField source="title"/>
-                    <DateField source="publishedAt" />
-                    <EditButton basePath="/posts"/>
-                    <DeleteButton basePath="/posts"/>
-                </Datagrid>
+const postFilters = [
+  <TextInput source="q" label="Search" alwaysOn />,
+  // <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
+  //     <SelectInput optionText="name" />
+  // </ReferenceInput>,
+]
+
+const MyPostList = (props) => {
+  return (
+    <List {...props} bulkActionButtons={false} filters={postFilters}>
+      <Datagrid>
+        <TextField source="id" />
+        <TextField source="title" />
+        <DateField source="publishedAt" />
+        <EditButton basePath="/posts" />
+        <DeleteButton basePath="/posts" />
+      </Datagrid>
     </List>
+  )
 }
 
 export default MyPostList
