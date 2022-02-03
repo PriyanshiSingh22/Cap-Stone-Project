@@ -1,5 +1,5 @@
 import * as React from "react"
-import { List, Datagrid, EditButton, DeleteButton, DateField, TextField, TextInput } from "react-admin"
+import { List, Datagrid, EditButton, DeleteButton, DateField, TextField, TextInput, ShowButton } from "react-admin"
 
 const postFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
@@ -17,6 +17,7 @@ const MyPostList = (props) => {
         <DateField source="publishedAt" />
         <EditButton basePath="/posts" />
         <DeleteButton basePath="/posts" />
+        <ShowButton basePath="/posts" />
       </Datagrid>
     </List>
   )
